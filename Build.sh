@@ -8,6 +8,7 @@ echo "LABEL maintainer=\"@Rangapv\"" >> $HOME/DockerBuild/Dockerfile
 echo "RUN apt-get update && apt-get install -y vim" >> $HOME/DockerBuild/Dockerfile
 echo "RUN apt-get install -y nginx" >> $HOME/DockerBuild/Dockerfile
 echo "EXPOSE 80" >> $HOME/DockerBuild/Dockerfile
+echo "CMD nginx -g 'daemon off;'" >> $HOME/DockerBuild/Dockerfile
 
 eval "cd $HOME/DockerBuild/"
 
