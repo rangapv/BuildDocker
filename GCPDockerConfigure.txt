@@ -1,0 +1,24 @@
+CONFIGURE GCP INSTANCE FOR image push:
+
+gcloud auth configure-docker
+
+if error then:
+
+sudo gcloud components install docker-credential-gcr
+
+if error then:
+
+VERSION=1.5.0;OS=linux;ARCH=amd64;curl -fsSL "https://github.com/GoogleCloudPlatform/docker-credential-gcr/releases/download/v${VERSION}/docker-credential-gcr_${OS}_${ARCH}-${VERSION}.tar.gz" | tar xz --to-stdout ./docker-credential-gcr | sudo tee /usr/bin/docker-credential-gcr > /dev/null && sudo chmod +x /usr/bin/docker-credential-gcr
+
+docker-credential-gcr configure-docker
+
+THEN IMMEDIATELY AFTER THIS:
+docker build -t nginx-pvr .
+
+TAG YOUR IMAGE:
+ex:docker tag nginx-pvr gcr.io/rosy-cache-200605/nginx-pvr
+docker tag image-name gcr.io/[PROJECT-ID]/image-name[:tag1]
+
+PUSH YOUR IMAGE:
+ex:docker push gcr.io/rosy-cache-200605/nginx-pvr:latest
+docker push gcr.io/[PROJECT-ID]/image-name:tag1
