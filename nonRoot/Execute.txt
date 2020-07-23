@@ -1,4 +1,0 @@
-This is for running the Dockerfile as is
-docker build -t nginx1 .
-docker run -it nginx1 /bin/sh &
-docker exec -it IMAGE_ID /bin/sh
